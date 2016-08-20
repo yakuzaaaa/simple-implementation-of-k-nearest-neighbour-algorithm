@@ -2,7 +2,6 @@
 #include<stdbool.h>
 #include<math.h>
 
-//globals
 FILE *dataset = NULL;
 FILE *testData = NULL;
 
@@ -110,12 +109,10 @@ bool buildTestArray() {
 struct test findQualityMetric(struct test data) {
 	//this function will find distance of each test data node with each training data node
 	//thus per test data node, all training data must must be iterated
-	//no idea how to do it right but well, just trying :(
-	
+
 	int i = 0;
 	for(i = 0; i < numberOfTrainingData; i++ ) {
 		data.qualityMetric[i].className = flowers[i].className;
-	//	printf("\n Distance %f from class %s\n",data.qualityMetric[i].distance,data.qualityMetric[i].className);
 		data.qualityMetric[i].distance = euclideanDistance( flowers[i] , data );					
 	}
 
@@ -151,8 +148,6 @@ void printTestResult() {
 		printf("\n %f %f %f %f \n",data[i].a1,data[i].a2,data[i].a3,data[i].a4);
 		//insertion sort the qualityMetric array distance to get the min distance
 		//The data belongs to the class with min distance.
-		//printf("\n Distance %f from class %s\n",data[i].qualityMetric[j].distance , data[i].qualityMetric[j].className);
-		//this insertion sort loop is copied, I am not sure how well it works.
 		for( j = 1; j < numberOfTrainingData; j++ ) { 
 		      temp = data[i].qualityMetric[j];
 		      t = j - 1;
@@ -168,8 +163,6 @@ void printTestResult() {
 		
 	} 
 }
-
-
 
 int main() {
 	int i = 0;
